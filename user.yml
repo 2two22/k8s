@@ -24,8 +24,8 @@ metadata:
   name: user-service
 spec:
   ports:
-     -  port: 8080
-        targetPort: 8080
+    -  port: 8080
+       targetPort: 8080
   selector:
     app: user
 

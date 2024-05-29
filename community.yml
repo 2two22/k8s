@@ -16,7 +16,7 @@ spec:
             - containerPort: 8081
   selector:
     matchLabels:
-      app: user
+      app: community
 ---
 apiVersion: v1
 kind: Service
