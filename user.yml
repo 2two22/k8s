@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user-deployment
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: user
+    spec:
+      containers:
+        - image: "twotwo22/user"
+          name: user
+          ports:
+            - containerPort: 8080
+  selector:
+    matchLabels:
+      app: user
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: user-service
+spec:
+  ports:
+     -  port: 8080
+        targetPort: 8080
+  selector:
+    app: user
+
