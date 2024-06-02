@@ -30,9 +30,16 @@ spec:
                 port:
                   number: 8081
           - pathType: Prefix
-            path: "/github(/|$)(.*)"
+            path: "/Github(/|$)(.*)"
             backend:
               service:
                 name: github-service
                 port:
                   number: 8082
+          - pathType: Prefix
+            path: "/News(/|$)(.*)"
+            backend:
+              service:
+                name: news-service
+                port:
+                  number: 8083
