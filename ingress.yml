@@ -29,3 +29,10 @@ spec:
                 name: community-service
                 port:
                   number: 8081
+          - pathType: Prefix
+            path: "/github(/|$)(.*)"
+            backend:
+              service:
+                name: github-service
+                port:
+                  number: 8082

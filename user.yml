@@ -10,7 +10,8 @@ spec:
         app: user
     spec:
       containers:
-        - image: "twotwo22/user"
+        - image: "twotwo22/user:latest"
+          imagePullPolicy: Always
           name: user
           ports:
             - containerPort: 8080
