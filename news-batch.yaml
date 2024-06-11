@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: news-batch
+spec:
+  schedule: "45 2 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          containers:
+            - image: "twotwo22/news-batch:latest"
+              name: news
+              ports:
+                - containerPort: 8084
+          restartPolicy: OnFailure
+  
