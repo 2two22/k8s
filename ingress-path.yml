@@ -1,0 +1,44 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: twotwo-ingress
+  annotations:
+    kubernetes.io/ingress.class: 'nginx'
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    nginx.ingress.kubernetes.io/enable-cors: "true"
+    nginx.ingress.kubernetes.io/cors-allow-methods: "PUT, GET, POST, PATCH, OPTIONS, DELETE"
+    nginx.ingress.kubernetes.io/cors-allow-origin: "*"
+    nginx.ingress.kubernetes.io/cors-expose-headers: "*"
+    nginx.ingress.kubernetes.io/cors-allow-headers: "Authorization, Origin, X-Requested-With, Content-Type, Accept"
+spec:
+  rules:
+    - http:
+        paths:
+          - pathType: Prefix
+            path: "/user(/|$)(.*)"
+            backend:
+              service:
+                name: user-service
+                port:
+                  number: 8080
+          - pathType: Prefix
+            path: "/community(/|$)(.*)"
+            backend:
+              service:
+                name: community-service
+                port:
+                  number: 8081
+          - pathType: Prefix
+            path: "/Github(/|$)(.*)"
+            backend:
+              service:
+                name: github-service
+                port:
+                  number: 8082
+          - pathType: Prefix
+            path: "/News(/|$)(.*)"
+            backend:
+              service:
+                name: news-service
+                port:
+                  number: 8083
